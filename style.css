@@ -76,7 +76,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 /* 單張大圖的設定 */
-.image-grid {
+.grid-item {
     width: 100%;
     max-width: 500px;  /* 💡 改成 500px（可以自由調整數字，數字越小照片越小） */
     height: auto;      /* 保持比例不變形 */

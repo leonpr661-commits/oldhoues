@@ -75,3 +75,12 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+/* 單張大圖的設定 */
+.page-img {
+    width: 100%;
+    max-width: 500px;  /* 💡 改成 500px（可以自由調整數字，數字越小照片越小） */
+    height: auto;      /* 保持比例不變形 */
+    border-radius: 6px;
+    display: block;
+    margin: 15px auto 0 auto; /* 保持置中 */
+}

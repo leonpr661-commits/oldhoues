@@ -76,7 +76,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 /* 網格內的小圖片 */
-.grid-item img {
+.image-grid img {
     width: 30%;
     height:30%;    /* 💡 可以把高度縮小到 150px ~ 180px */
     object-fit: cover; 

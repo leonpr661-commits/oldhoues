@@ -90,3 +90,10 @@ body {
     height: 180px;    /* 💡 可以把高度縮小到 150px ~ 180px */
     object-fit: cover; 
 }
+
+page-img
+.page-img img {
+    width: 100%;
+    height: 180px;    /* 💡 可以把高度縮小到 150px ~ 180px */
+    object-fit: cover; 
+}

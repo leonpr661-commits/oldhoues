@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#24382e" />
+  <meta name="description" content="走讀臺中東勢大茅埔：從客家聚落歷史、映月山房，到互動式 3D 地形導覽。" />
+  <title>大茅埔 Dà Mǎo Pǔ｜山水之間的聚落記憶</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="大茅埔首頁" data-nav="home">
+        <span class="brand-mark">大</span>
+        <span class="brand-text"><strong>大茅埔</strong><small>DÀ MǍO PǓ · LOCAL STORIES</small></span>
+      </a>
+      <button class="mobile-menu" id="mobileMenu" aria-label="開啟導覽選單">☰</button>
+      <nav class="main-nav" id="mainNav" aria-label="主要導覽">
+        <button class="nav-link active" data-page="history">01 <span>歷史脈絡</span></button>
+        <button class="nav-link" data-page="house">02 <span>映月山房</span></button>
+        <button class="nav-link" data-page="map">03 <span>大茅埔地圖</span></button>
+      </nav>
+      <a class="header-note" href="#about" data-nav="about">認識這座聚落 <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <!-- HISTORY PAGE -->
+      <section class="page active" id="page-history" aria-labelledby="history-title">
+        <div class="hero hero-history">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> TAICHUNG · DONGSHI · HAKKA SETTLEMENT</p>
+            <h1 id="history-title">在山與水之間，<br /><em>讀一座聚落的時間。</em></h1>
+            <p class="hero-lede">沿著水圳走進大茅埔，從開庄、防禦、林業與農業，重新看見一座客家聚落如何在山城裡生活。</p>
+            <div class="hero-actions">
+              <button class="button button-dark" data-jump="history-content">循著歷史走 <span>↓</span></button>
+              <button class="button button-quiet" data-page="map">探索 3D 地圖 <span>↗</span></button>
+            </div>
+            <div class="hero-caption"><span>01 / 03</span><span>歷史脈絡 · HISTORY</span></div>
+          </div>
+          <div class="hero-art">
+            <div class="hero-photo" role="img" aria-label="大茅埔圳導覽現場的示意照片">
+              <img src="https://taichung.travel/content/images/tours/52164/1024x768_image1637822618807130712.jpg" alt="大茅埔圳周邊導覽現場" onerror="this.style.display='none'" />
+              <div class="photo-fallback"><span>WATER · MEMORY · LAND</span><strong>一條圳，<br />串起一庄人的日常。</strong></div>
+            </div>
+            <div class="hero-stamp"><span>山城</span><b>28</b><span>股</span></div>
+            <div class="hero-vertical">A HAKKA DEFENSIVE SETTLEMENT</div>
+            <div class="hero-art-caption">大茅埔圳與聚落生活意象 <small>影像來源：臺中觀光旅遊網</small></div>
+          </div>
+        </div>
+
+        <div class="intro-strip" id="about">
+          <div class="intro-label">ABOUT THE PLACE</div>
+          <p>大茅埔位於臺中東勢，是一處以水圳、信仰與家族聚居紋理交織而成的客家聚落。本網站以<strong>歷史記憶、老屋空間、地景導覽</strong>三個方向，記錄地方的過去與正在發生的改變。</p>
+          <div class="intro-number"><b>200</b><span>年左右的<br />開墾記憶</span></div>
+        </div>
+
+        <section class="content-section history-section" id="history-content">
+          <div class="section-heading">
+            <div><p class="eyebrow">THE STORY OF DAMAOPU</p><h2>一段沿著水路展開的歷史</h2></div>
+            <p class="section-intro">從清代開庄到今日的聚落課題，時間留下的不只是建築，也包含人們如何守護土地、分享水源與延續生活。</p>
+          </div>
+
+          <div class="history-layout">
+            <aside class="history-aside">
+              <span class="aside-kicker">CHAPTERS</span>
+              <div class="chapter-index"><b>05</b><span>個歷史章節</span></div>
+              <p>點選時間節點，閱讀大茅埔不同時代的聚落故事。</p>
+              <div class="aside-rule"></div>
+              <span class="aside-quote">「水路環繞聚落，<br />也連結了庄民的生活。」</span>
+            </aside>
+            <div class="timeline">
+              <article class="timeline-item">
+                <div class="timeline-year">1761—1822</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-top"><span>01 / 開庄與聚落形成</span><span class="tag">清代</span></div>
+                  <h3>從「14 大股」到「28 股」</h3>
+                  <p>清乾隆年間，東勢一帶仍屬界外區域。嘉慶年間，客籍墾首組成「14 大股」承墾；道光二年（1822 年），以張寧壽為首的墾團重組為「28 股」，大茅埔逐步展開有系統的建庄工程。</p>
+                  <div class="timeline-foot"><span>聚落關鍵字</span><b>28 股・大茅埔圳・泰興宮</b></div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-year">清代中葉</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-top"><span>02 / 族群與邊界</span><span class="tag">拓墾時期</span></div>
+                  <h3>原住民族與客家人的衝突</h3>
+                  <p>大茅埔位於大甲溪中游河階地，鄰近雪山山脈西麓。漢人拓墾與引水築圳改變了原有的生活空間，也使聚落成為衝突前線。庄民透過刺竹、隘寮、隘勇巡防等方式防禦，逐漸形成聚族而居、向外防守的聚落紋理。</p>
+                  <div class="timeline-foot"><span>聚落關鍵字</span><b>隘寮・刺竹・防禦街道</b></div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-year">1915 起</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-top"><span>03 / 山林資源與交通</span><span class="tag">日治時期</span></div>
+                  <h3>八仙山林場的開發</h3>
+                  <p>日治時期，八仙山林業進入大規模開發。大茅埔位於大甲溪進入山區的交通門戶，周邊道路與林業運輸帶動人員、物資往來，也讓山城經濟與基礎建設產生變化。</p>
+                  <div class="timeline-foot"><span>聚落關鍵字</span><b>八仙山・林業・山城交通</b></div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-year">1956—1999</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <div class="timeline-top"><span>04 / 交通與產業轉型</span><span class="tag">民國時期</span></div>
+                  <h3>從中橫門戶到精緻農業</h3>
+                  <p>戰後東勢一帶逐步發展，1956 年東西橫貫公路工程帶動交通與商業往來。大茅埔的產業也從傳統水稻種植，逐漸轉向高接梨、甜柿與柑橘等果樹栽培。1999 年九二一地震後，交通人潮減少，聚落生活再次轉變。</p>
+                  <div class="timeline-foot"><span>聚落關鍵字</span><b>中橫公路・高接梨・柑橘</b></div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-year">現在</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card-last">
+                  <div class="timeline-top"><span>05 / 當代課題與地方記憶</span><span class="tag">當代</span></div>
+                  <h3>如何讓地方故事繼續被看見？</h3>
+                  <p>今日大茅埔面臨青壯年人口外移、高齡化、老屋閒置與文化傳承接班等課題。防禦型聚落的空間記憶、大埔腔客語、龍神信仰與水圳生活，需要被持續記錄、整理並分享。</p>
+                  <div class="issue-pills"><span>人口老化</span><span>老屋保存</span><span>文化傳承</span><span>青年返鄉</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="bridge-section">
+          <div class="bridge-copy"><p class="eyebrow">FROM HISTORY TO PLACE</p><h2>讓歷史不只留在文字裡。</h2><p>沿著聚落的時間走到一棟老屋，再把視線拉高，看看水圳、信仰與地形如何串起大茅埔。</p></div>
+          <button class="round-arrow" data-page="house" aria-label="前往映月山房">↗</button>
+          <div class="bridge-steps"><span>01 歷史脈絡</span><i></i><span>02 映月山房</span><i></i><span>03 3D 地圖</span></div>
+        </section>
+      </section>
+
+      <!-- HOUSE PAGE -->
+      <section class="page" id="page-house" aria-labelledby="house-title">
+        <div class="page-hero page-hero-house">
+          <div class="page-hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> OLD HOUSE · NEW STORIES</p>
+            <h1 id="house-title">映月山房，<br /><em>老屋的新日常。</em></h1>
+            <p>一座老屋，可以收藏時間，也可以成為地方交流與創生的起點。</p>
+            <div class="page-hero-meta"><span>02 / 03</span><span>映月山房 · YINGYUE MOUNTAIN HOUSE</span></div>
+          </div>
+          <div class="house-illustration" aria-label="映月山房內容預留視覺區">
+            <div class="house-sun"></div><div class="house-roof"></div><div class="house-body"><div class="house-door"></div><div class="house-window"></div></div><div class="house-ground"></div>
+            <span class="house-ill-label">A PLACE TO KEEP STORIES</span>
+          </div>
+        </div>
+        <section class="content-section house-content">
+          <div class="section-heading">
+            <div><p class="eyebrow">THE HOUSE ARCHIVE</p><h2>走進映月山房</h2></div>
+            <p class="section-intro">本頁先完成展示架構。老屋照片、歷史、室內模型與屋主訪談內容，待後續取得資料後再逐項填入。</p>
+          </div>
+          <div class="house-feature-grid">
+            <article class="house-feature house-feature-main">
+              <div class="feature-number">01</div><span class="feature-status">CONTENT TO COME</span>
+              <div class="feature-symbol">⌂</div>
+              <div class="feature-bottom"><h3>老屋歷史</h3><p>建築沿革、家族記憶、修繕過程與老屋特色。</p><span class="feature-cta">預留內容區 <b>＋</b></span></div>
+            </article>
+            <article class="house-feature">
+              <div class="feature-number">02</div><span class="feature-status">3D TOUR · FLOOR 1</span>
+              <div class="feature-symbol symbol-cube">▧</div>
+              <div class="feature-bottom"><h3>一樓 3D 導覽</h3><p>藝術品、生活老物件、空間設計特色。</p><span class="feature-cta">預留 3D 模型入口 <b>＋</b></span></div>
+            </article>
+            <article class="house-feature">
+              <div class="feature-number">03</div><span class="feature-status">3D TOUR · FLOOR 2</span>
+              <div class="feature-symbol symbol-cube">▤</div>
+              <div class="feature-bottom"><h3>二樓 3D 導覽</h3><p>收藏、藝術品、木構屋架與空間特色。</p><span class="feature-cta">預留 3D 模型入口 <b>＋</b></span></div>
+            </article>
+            <article class="house-feature house-feature-wide">
+              <div class="feature-number">04</div><span class="feature-status">VISION & COMMUNITY</span>
+              <div class="feature-symbol">✳</div>
+              <div class="feature-bottom"><h3>屋主的願景</h3><p>地方創生、文化交流、老屋保存與未來想像。</p><span class="feature-cta">預留訪談與願景內容 <b>＋</b></span></div>
+            </article>
+          </div>
+          <div class="house-note"><span class="note-mark">i</span><p><strong>內容建置提醒</strong>　後續可為一樓、二樓分別加入 GLB 室內模型，並在模型中放置互動熱點，讓訪客點選老物件或藝術品閱讀介紹。</p></div>
+        </section>
+        <section class="house-bottom-cta"><div><span>NEXT / EXPLORE THE SETTLEMENT</span><h2>離開老屋，走進整座大茅埔。</h2></div><button class="button button-light" data-page="map">開啟 3D 導覽地圖 <span>↗</span></button></section>
+      </section>
+
+      <!-- MAP PAGE -->
+      <section class="page" id="page-map" aria-labelledby="map-title">
+        <div class="map-intro">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE 3D MAP TOUR</p><h1 id="map-title">把大茅埔，<em>放進掌心裡。</em></h1><p>從地形高低、聚落紋理到生活地標，透過互動 3D 模型重新認識地方。</p></div>
+          <div class="map-intro-side"><span>03 / 03</span><b>5 PLACES<br />ONE SETTLEMENT</b><small>五個地點，一座聚落的共同記憶</small></div>
+        </div>
+        <div class="map-workspace">
+          <aside class="map-list-panel">
+            <div class="panel-topline"><span>FIELD NOTES / 01—05</span><span class="live-dot">GUIDE</span></div>
+            <h2>聚落裡的五個座標</h2>
+            <p class="map-list-hint">選擇一個地點，閱讀它與大茅埔的關係。</p>
+            <div class="poi-list" id="poiList">
+              <button class="poi-button selected" data-poi="taixing"><span class="poi-index">01</span><span class="poi-name">泰興宮<small>聚落的精神心臟</small></span><span class="poi-arrow">↗</span></button>
+              <button class="poi-button" data-poi="wubei"><span class="poi-index">02</span><span class="poi-name">屋背山<small>天然屏障與風水靠山</small></span><span class="poi-arrow">↗</span></button>
+              <button class="poi-button" data-poi="dragon"><span class="poi-index">03</span><span class="poi-name">龍神<small>山林土地的守護神</small></span><span class="poi-arrow">↗</span></button>
+              <button class="poi-button" data-poi="begong"><span class="poi-index">04</span><span class="poi-name">伯公廟<small>守護庄頭與水脈</small></span><span class="poi-arrow">↗</span></button>
+              <button class="poi-button" data-poi="canal"><span class="poi-index">05</span><span class="poi-name">洗衣圳<small>護城河、灌溉與生活水道</small></span><span class="poi-arrow">↗</span></button>
+            </div>
+            <div class="panel-footnote"><span class="footnote-icon">⌖</span><p>實際點位將依田野踏查與 Blender 模型中的定位物件校正。</p></div>
+          </aside>
+
+          <div class="map-viewer-column">
+            <div class="viewer-toolbar"><div><span class="viewer-live"></span><span id="modelStatus">示意地形已載入</span></div><div class="viewer-tools"><button id="resetView" title="重設視角">⟲ <span>重設視角</span></button><label class="upload-model" for="modelUpload">＋ 載入 GLB<input type="file" id="modelUpload" accept=".glb,model/gltf-binary" /></label></div></div>
+            <div class="viewer-frame" id="viewerFrame">
+              <canvas id="terrainCanvas" aria-label="可拖曳旋轉、縮放的 3D 地形導覽視窗"></canvas>
+              <div class="viewer-corner viewer-corner-tl">DÀ MǍO PǓ<br /><small>3D TERRAIN VIEW</small></div>
+              <div class="viewer-corner viewer-corner-br">DRAG TO ROTATE · SCROLL TO ZOOM</div>
+              <div class="viewer-loading" id="viewerLoading"><span class="loading-orbit"></span><small>正在準備地形視圖…</small></div>
+              <div class="viewer-overlay-note" id="demoNotice">DEMO TERRAIN · 示意地形，非實際測量模型</div>
+            </div>
+            <div class="viewer-caption"><span><b>地形視圖</b>　拖曳旋轉・滾輪縮放・點擊標記</span><span>GLB / GLTF 2.0</span></div>
+          </div>
+
+          <aside class="poi-detail-panel" id="poiDetail">
+            <div class="detail-topline"><span id="detailIndex">PLACE 01 / 05</span><span class="detail-compass">✳</span></div>
+            <p class="detail-kicker" id="detailKicker">SPIRITUAL CENTER</p>
+            <h2 id="detailTitle">泰興宮</h2>
+            <p class="detail-subtitle" id="detailSubtitle">聚落的空間座標與精神心臟</p>
+            <div class="detail-divider"></div>
+            <div class="detail-block"><span>客家文化意義</span><p id="detailCulture">泰興宮是大茅埔聚落重要的信仰中心。聚落建庄時以廟宇為中軸，發展出左右對稱的伙房街廓，廟宇也成為居民共同生活的空間原點。</p></div>
+            <div class="detail-block detail-local"><span>在地人的生活意義</span><p id="detailLocal">廟埕像是全庄的大客廳。節慶、祭典與日常聊天都在此發生，讓不同家族的人們有共同相聚的地方。</p></div>
+            <div class="detail-tags" id="detailTags"><span>信仰中心</span><span>28 股</span><span>庄民生活</span></div>
+            <div class="detail-controls"><button id="prevPoi" aria-label="上一個地點">←</button><span id="detailCount">01 — 05</span><button id="nextPoi" aria-label="下一個地點">→</button></div>
+          </aside>
+        </div>
+        <div class="map-bottom-note"><span>MAP NOTE</span><p>目前版本使用程式建立的示意地形作為操作預覽。取得 BlenderGIS 地形後，請匯出為 <code>models/damaopu-terrain.glb</code>；五個標記則在 Blender 中建立命名為 <code>POI_TAIXING</code> 等定位物件，網站便能自動抓取位置。</p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><span class="brand-mark">大</span><span><strong>大茅埔</strong><small>LOCAL STORIES, SHARED MEMORY.</small></span></div>
+      <p>以數位方式記錄地方歷史、老屋與生活地景。</p>
+      <span class="footer-credit">專題網站設計原型 · 2026</span>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

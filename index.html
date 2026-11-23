@@ -18,6 +18,8 @@
       }
     }
   </script>
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 </head>
 <body>
   <div class="site-shell">
@@ -189,51 +191,90 @@
       </section>
 
       <!-- MAP PAGE -->
+      <!-- MAP PAGE -->
       <section class="page" id="page-map" aria-labelledby="map-title">
         <div class="map-intro">
-          <div><p class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE 3D MAP TOUR</p><h1 id="map-title">把大茅埔，<em>放進掌心裡。</em></h1><p>從地形高低、聚落紋理到生活地標，透過互動 3D 模型重新認識地方。</p></div>
-          <div class="map-intro-side"><span>03 / 03</span><b>5 PLACES<br />ONE SETTLEMENT</b><small>五個地點，一座聚落的共同記憶</small></div>
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE 3D MAP TOUR</p>
+            <h1 id="map-title">從大甲溪流域，<em>走進大茅埔。</em></h1>
+            <p id="mapSubtitle">第一階段：透過 Blender 3D 流域模型，看見大茅埔與新社台地、谷關、八仙山的空間關係。</p>
+          </div>
+          <div class="map-intro-side">
+            <span>03 / 03</span>
+            <b id="mapSideCount">STAGE 01 → 02<br />MODEL TO 3D MAP</b>
+            <small>由流域 3D 模型切換至高程實景地圖</small>
+          </div>
         </div>
+
+        <!-- 敘事尺度切換列 -->
+        <div class="scale-switcher" role="tablist" aria-label="地圖尺度切換">
+          <button class="scale-tab active" data-scale="macro" role="tab" aria-selected="true">
+            <span class="scale-step">PART 01 · 3D 流域模型（宏觀）</span>
+            <strong>大甲溪流域與周邊台地</strong>
+            <small>大茅埔 × 新社台地 × 谷關 × 八仙山</small>
+          </button>
+          <div class="scale-arrow">→</div>
+          <button class="scale-tab" data-scale="micro" role="tab" aria-selected="false">
+            <span class="scale-step">PART 02 · 3D 高程正射地圖（微觀）</span>
+            <strong>大茅埔聚落細部導覽</strong>
+            <small>泰興宮 × 屋背山 × 龍神 × 伯公廟 × 洗衣圳</small>
+          </button>
+        </div>
+
         <div class="map-workspace">
           <aside class="map-list-panel">
-            <div class="panel-topline"><span>FIELD NOTES / 01—05</span><span class="live-dot">GUIDE</span></div>
-            <h2>聚落裡的五個座標</h2>
-            <p class="map-list-hint">選擇一個地點，閱讀它與大茅埔的關係。</p>
-            <div class="poi-list" id="poiList">
-              <button class="poi-button selected" data-poi="taixing"><span class="poi-index">01</span><span class="poi-name">泰興宮<small>聚落的精神心臟</small></span><span class="poi-arrow">↗</span></button>
-              <button class="poi-button" data-poi="wubei"><span class="poi-index">02</span><span class="poi-name">屋背山<small>天然屏障與風水靠山</small></span><span class="poi-arrow">↗</span></button>
-              <button class="poi-button" data-poi="dragon"><span class="poi-index">03</span><span class="poi-name">龍神<small>山林土地的守護神</small></span><span class="poi-arrow">↗</span></button>
-              <button class="poi-button" data-poi="begong"><span class="poi-index">04</span><span class="poi-name">伯公廟<small>守護庄頭與水脈</small></span><span class="poi-arrow">↗</span></button>
-              <button class="poi-button" data-poi="canal"><span class="poi-index">05</span><span class="poi-name">洗衣圳<small>護城河、灌溉與生活水道</small></span><span class="poi-arrow">↗</span></button>
-            </div>
-            <div class="panel-footnote"><span class="footnote-icon">⌖</span><p>實際點位將依田野踏查與 Blender 模型中的定位物件校正。</p></div>
+            <div class="panel-topline"><span id="panelScaleTag">MACRO MODEL / 01—04</span><span class="live-dot">GUIDE</span></div>
+            <h2 id="panelHeading">流域裡的四個地理座標</h2>
+            <p class="map-list-hint" id="panelHint">點選座標，認識大茅埔在整個大甲溪水系中的相對位置。</p>
+            <div class="poi-list" id="poiList"></div>
+            <div class="panel-footnote"><span class="footnote-icon">⌖</span><p id="panelFootnote">此階段呈現大甲溪中上游河階與山谷地形的相對關係。</p></div>
           </aside>
 
           <div class="map-viewer-column">
-            <div class="viewer-toolbar"><div><span class="viewer-live"></span><span id="modelStatus">示意地形已載入</span></div><div class="viewer-tools"><button id="resetView" title="重設視角">⟲ <span>重設視角</span></button><label class="upload-model" for="modelUpload">＋ 載入 GLB<input type="file" id="modelUpload" accept=".glb,model/gltf-binary" /></label></div></div>
-            <div class="viewer-frame" id="viewerFrame">
-              <canvas id="terrainCanvas" aria-label="可拖曳旋轉、縮放的 3D 地形導覽視窗"></canvas>
-              <div class="viewer-corner viewer-corner-tl">DÀ MǍO PǓ<br /><small>3D TERRAIN VIEW</small></div>
-              <div class="viewer-corner viewer-corner-br">DRAG TO ROTATE · SCROLL TO ZOOM</div>
-              <div class="viewer-loading" id="viewerLoading"><span class="loading-orbit"></span><small>正在準備地形視圖…</small></div>
-              <div class="viewer-overlay-note" id="demoNotice">DEMO TERRAIN · 示意地形，非實際測量模型</div>
+            <div class="viewer-toolbar">
+              <div><span class="viewer-live"></span><span id="modelStatus">正在載入流域模型…</span></div>
+              <div class="viewer-tools">
+                <button id="resetView" title="重設視角">⟲ <span>重設視角</span></button>
+                <label class="upload-model" id="uploadGlbLabel" for="modelUpload">＋ 載入 GLB<input type="file" id="modelUpload" accept=".glb,model/gltf-binary" /></label>
+              </div>
             </div>
-            <div class="viewer-caption"><span><b>地形視圖</b>　拖曳旋轉・滾輪縮放・點擊標記</span><span>GLB / GLTF 2.0</span></div>
+            <div class="viewer-frame" id="viewerFrame">
+              <!-- 第一階段：Three.js 3D 模型畫布 -->
+              <canvas id="terrainCanvas" aria-label="可拖曳旋轉、縮放的 3D 地形導覽視窗"></canvas>
+              <!-- 第二階段：MapLibre 3D 高程衛星地圖容器 -->
+              <div id="maplibreContainer" aria-label="大茅埔 3D 高程正射影像地圖" style="display:none;"></div>
+
+              <div class="viewer-corner viewer-corner-tl"><span id="viewerCornerTitle">DAJIA RIVER BASIN</span><br /><small id="viewerCornerSub">MACRO 3D TERRAIN MODEL</small></div>
+              <div class="viewer-corner viewer-corner-br" id="viewerControlHint">DRAG TO ROTATE · SCROLL TO ZOOM</div>
+              <div class="viewer-loading" id="viewerLoading"><span class="loading-orbit"></span><small>正在準備地形視圖…</small></div>
+              <div class="viewer-overlay-note" id="demoNotice">DEMO TERRAIN · 示意地形</div>
+            </div>
+            <div class="viewer-caption"><span id="viewerCaptionLeft"><b>地形視圖</b> 拖曳旋轉・滾輪縮放・點擊標記</span><span id="viewerCaptionRight">GLB / GLTF 2.0</span></div>
           </div>
 
           <aside class="poi-detail-panel" id="poiDetail">
-            <div class="detail-topline"><span id="detailIndex">PLACE 01 / 05</span><span class="detail-compass">✳</span></div>
-            <p class="detail-kicker" id="detailKicker">SPIRITUAL CENTER</p>
-            <h2 id="detailTitle">泰興宮</h2>
-            <p class="detail-subtitle" id="detailSubtitle">聚落的空間座標與精神心臟</p>
+            <div class="detail-topline"><span id="detailIndex">PLACE 01 / 04</span><span class="detail-compass">✳</span></div>
+            <p class="detail-kicker" id="detailKicker">ALLUVIAL TERRACE</p>
+            <h2 id="detailTitle">大茅埔</h2>
+            <p class="detail-subtitle" id="detailSubtitle">大甲溪中游北岸的河階聚落</p>
             <div class="detail-divider"></div>
-            <div class="detail-block"><span>客家文化意義</span><p id="detailCulture">泰興宮是大茅埔聚落重要的信仰中心。聚落建庄時以廟宇為中軸，發展出左右對稱的伙房街廓，廟宇也成為居民共同生活的空間原點。</p></div>
-            <div class="detail-block detail-local"><span>在地人的生活意義</span><p id="detailLocal">廟埕像是全庄的大客廳。節慶、祭典與日常聊天都在此發生，讓不同家族的人們有共同相聚的地方。</p></div>
-            <div class="detail-tags" id="detailTags"><span>信仰中心</span><span>28 股</span><span>庄民生活</span></div>
-            <div class="detail-controls"><button id="prevPoi" aria-label="上一個地點">←</button><span id="detailCount">01 — 05</span><button id="nextPoi" aria-label="下一個地點">→</button></div>
+            <div class="detail-block"><span id="detailLabel1">地理與歷史定位</span><p id="detailCulture"></p></div>
+            <div class="detail-block detail-local"><span id="detailLabel2">與大茅埔的空間關係</span><p id="detailLocal"></p></div>
+            <div class="detail-tags" id="detailTags"></div>
+
+            <!-- 階段敘事銜接按鈕 -->
+            <div class="scale-next-box" id="scaleNextBox">
+              <button class="button button-dark scale-next-btn" id="switchScaleBtn">拉近視角：進入大茅埔細部導覽 →</button>
+            </div>
+
+            <div class="detail-controls"><button id="prevPoi" aria-label="上一個地點">←</button><span id="detailCount">01 — 04</span><button id="nextPoi" aria-label="下一個地點">→</button></div>
           </aside>
         </div>
-        <div class="map-bottom-note"><span>MAP NOTE</span><p>目前版本使用程式建立的示意地形作為操作預覽。取得 BlenderGIS 地形後，請匯出為 <code>models/damaopu-terrain.glb</code>；五個標記則在 Blender 中建立命名為 <code>POI_TAIXING</code> 等定位物件，網站便能自動抓取位置。</p></div>
+
+        <div class="map-bottom-note">
+          <span>MAP NOTE</span>
+          <p id="mapBottomNote">第一階段使用 BlenderGIS 製作之 <code>models/dajia-basin.glb</code> 呈現大甲溪流域立體地形；第二階段串接內政部國土測繪中心正射影像與開源數位高程（DEM），呈現大茅埔聚落實景。</p>
+        </div>
       </section>
     </main>
 
